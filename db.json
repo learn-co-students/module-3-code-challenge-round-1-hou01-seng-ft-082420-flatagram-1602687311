@@ -5,6 +5,14 @@
       "title": "Woofing those bugs away",
       "likes": 0,
       "image": "./assets/coder-dog.png"
+    },
+    {
+      "comment": "sdsdsdsd",
+      "id": 2
+    },
+    {
+      "comment": "My comment is bad ass",
+      "id": 3
     }
   ],
   "comments": [
