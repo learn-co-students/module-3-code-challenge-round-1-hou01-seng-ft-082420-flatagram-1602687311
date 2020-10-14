@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const getImage = document.getElementById('log')
     logBtn.addEventListener('click', fetchData);
 
+    
     async function fetchData(){
         const resp = await fetch(imageURL);
         const data = await resp.json();
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // //         renderImage(image)
     // //     })
     // })
-    function renderImage(image){
+    function  getImage(image){
 
         let imageCard = document.createElement('div')
         imageCard.className = 'card'
@@ -40,6 +41,34 @@ document.addEventListener("DOMContentLoaded", () => {
         let imageLikes = document.createElement('p')
         imageLikes.innerText = image.likes
 
+        let imageComments = document.createElement('li')
+        imageComments.className = ('comments')
+
+        getImage.append(imageTitle, imageLikes, imageComments)
+        imageContainer.append(getImage)
+
 
     }
+    addImageComments.addEventListener('submit,' function(e){
+        image.comment = e.target.text.value
+
+        postComment(comment)
+    })
+    function postComment(comment){
+
+        let imageOption = {
+            method: 'POST'
+            headers:{
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }
+            body: JSON.stringify({
+                'comment': image.text
+            })
+
+            fetch(imageURL, imageOption)
+            .then(renderImage(image))
+        }
+    }
 })
+
