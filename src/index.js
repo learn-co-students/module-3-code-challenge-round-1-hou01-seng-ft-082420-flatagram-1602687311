@@ -47,7 +47,22 @@ function renderImage(image) {
     const likeBtn = document.getElementById("like-button")
     likeBtn.addEventListener("click", (e) => {
         let newLikes = image.likes++
-        console.log(newLikes)
+        fetch(url + "/images/1", {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                likes: newLikes
+            })
+        })
+        likes.innerHTML = `${newLikes} likes`
+    })
+
+    const disLikeBtn = document.getElementById("dislike-button")
+    disLikeBtn.addEventListener("click", (e) => {
+        let newLikes = image.likes--
         fetch(url + "/images/1", {
             method: 'PATCH',
             headers: {
