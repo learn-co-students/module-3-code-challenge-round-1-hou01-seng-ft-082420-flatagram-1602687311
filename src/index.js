@@ -22,6 +22,15 @@ function renderComment(comment) {
     const ul = document.getElementById("comments")
     const li = document.createElement("li")
     li.innerHTML = comment.content
+    const delBtn = document.createElement("button")
+    delBtn.innerHTML = "Delete"
+    delBtn.addEventListener("click", (e) => {
+        fetch(url+`/comments/${comment.id}`, {
+            method: "DELETE"
+        })
+        li.remove()
+    })
+    li.append(delBtn)
     ul.append(li)
 }
 
